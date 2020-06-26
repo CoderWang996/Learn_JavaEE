@@ -1,4 +1,4 @@
-package Day01Code.通讯录;
+package cn.itcast.Day01.通讯录;
 
 public class contacts {
     private String name;

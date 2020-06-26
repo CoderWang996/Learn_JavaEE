@@ -1,4 +1,4 @@
-package JUNE.src.cn.itcast.Day13.Poker2;
+package cn.itcast.Day13.Poker2;
 //加强版洗牌 发牌  看牌
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package JUNE.src.cn.itcast.Day13.Poker1;
+package cn.itcast.Day13.Poker1;
 //普通版洗牌 发牌  看牌（看牌的时候点数无序）
 import java.util.ArrayList;
 import java.util.Collections;
