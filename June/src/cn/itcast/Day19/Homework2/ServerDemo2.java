@@ -25,7 +25,8 @@ public class ServerDemo2 {
         ServerSocket ss = new ServerSocket(10000);
         Socket s = ss.accept();
         BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        PrintWriter bw=new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
+//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
         while (true) {
             try {
                 String line;
@@ -35,9 +36,11 @@ public class ServerDemo2 {
                 }
                 StringBuilder sb = new StringBuilder();
                 sb.append(line);
-                bw.write(sb.reverse().toString());
-                bw.newLine();
+                bw.println(sb.reverse().toString());
                 bw.flush();
+//                bw.write(sb.reverse().toString());
+//                bw.newLine();
+//                bw.flush();
             } catch (Exception e) {
                 break;
             }

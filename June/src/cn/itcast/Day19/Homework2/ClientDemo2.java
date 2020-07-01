@@ -23,16 +23,18 @@ public class ClientDemo2 {
     public static void main(String[] args) throws IOException {
         Socket s = new Socket("www.CoderWang.com", 10000);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        PrintWriter bw=new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
+//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
         while (true) {
             System.out.println("请输入一段文本：");
             String line = br.readLine();
-            bw.write(line);
+//            bw.write(line);
+            bw.println(line);
             if (line.equals("over")) {
                 System.out.println("结束访问");
                 break;
             }
-            bw.newLine();
+//            bw.newLine();
             bw.flush();
             BufferedReader br2 = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String ll;

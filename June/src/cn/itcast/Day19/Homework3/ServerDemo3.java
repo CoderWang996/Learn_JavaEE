@@ -1,8 +1,8 @@
 package cn.itcast.Day19.Homework3;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+        import java.io.IOException;
+        import java.net.ServerSocket;
+        import java.net.Socket;
 /*
 【编号2106】请编写程序，分别模拟使用TCP协议传输数据的客户端和服务器端，完成文件上传。
 客户端获取键盘录入的文件路径，将文件上传给服务器端，服务器端获取到数据后，保存到当前模块目录下，
