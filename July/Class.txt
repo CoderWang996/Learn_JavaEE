@@ -1,0 +1,2 @@
+className=Day03.Class.Student
+methodName=study
