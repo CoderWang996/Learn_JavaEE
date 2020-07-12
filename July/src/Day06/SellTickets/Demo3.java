@@ -1,0 +1,40 @@
+package Day06.SellTickets;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+//某电影院目前正在上映国产大片，共有100张票，而它有3个窗口卖票，请设计一个程序模拟该电影院卖票
+//用Lock锁
+class SellTicket implements Runnable {
+    private int tickets = 100;
+    private Lock lock = new ReentrantLock();
+
+    @Override
+    public void run() {
+        while (true) {
+            lock.lock();
+            if (tickets > 0) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName() + "正在出售第" + tickets + "张票。");
+                tickets--;
+            }
+            lock.unlock();
+        }
+    }
+}
+
+public class Demo3 {
+    public static void main(String[] args) {
+        SellTicket st = new SellTicket();
+        Thread t1 = new Thread(st, "窗口一");
+        Thread t2 = new Thread(st, "窗口二");
+        Thread t3 = new Thread(st, "窗口三");
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
