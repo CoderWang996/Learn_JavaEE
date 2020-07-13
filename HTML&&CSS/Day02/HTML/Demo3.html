@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>type</title>
+    <style>
+        body{
+            background: url("../img/star.gif");
+        }
+        .center {
+            width: 50%;
+            text-align: center;
+            margin: auto;
+            background: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<div class="center">
+    <form action="#" method="get" autocomplete="on">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" value="" placeholder="请输入用户名：" required/><br/>
+
+        &nbsp;<label for="password">密码：</label>
+        &nbsp;<input type="password" name="password" id="password" value="" placeholder="请输入密码：" required/><br/>
+
+        &nbsp;<label for="email">邮箱：</label>
+        &nbsp;<input type="email" name="email" id="email" value="" placeholder="请输入邮箱：" required/><br/>
+
+        &nbsp;<label for="tel">电话：</label>
+        &nbsp;<input type="tel" name="tel" id="tel" value="" placeholder="请输入电话：" required><br>
+
+        <label for="gender">性别：</label>
+        <input type="radio" name="gender" id="gender" value="man"/>男
+        <input type="radio" name="gender" value="women"/>女
+        <input type="radio" name="gender" value="other"/>保密<br/>
+
+        <label for="hobby">爱好</label>
+        <input type="checkbox" name="hobby" id="hobby" value="fuckGirl">泡妞
+        <input type="checkbox" name="hobby" value="sing">唱歌
+        <input type="checkbox" name="hobby" value="game">打游戏<br/>
+
+        <label for="date">出生日期：</label>
+        <input type="date" name="date" id="date" value=""><br>
+
+        <label for="city">所在城市：</label>
+        <select id="city" name="city" vocab="">
+            <option>---请选择你所在的城市---</option>
+            <optgroup label="直辖市">
+                <option>北京</option>
+                <option>上海</option>
+                <option>广州</option>
+                <option>深圳</option>
+            </optgroup>
+            <optgroup label="省会城市">
+                <option>合肥</option>
+                <option>武汉</option>
+                <option>西安</option>
+                <option>郑州</option>
+            </optgroup>
+        </select><br/>
+
+        <label for="desc">个性签名：</label>
+        <textarea id="desc" name="desc" rows="5" cols="40" placeholder="请输入你的与众不同..."></textarea><br>
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+        <br/>
+    </form>
+</div>
+</body>
+</html>
