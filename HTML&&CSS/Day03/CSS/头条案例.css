@@ -1,0 +1,44 @@
+.top {
+    background: black;
+    text-align: right;
+    line-height: 40px;
+    font-size: 20px;
+}
+.top a{
+    color: snow;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: red;
+}
+.nav{
+    line-height: 40px;
+}
+.left{
+    width: 20%;
+    text-align: center;
+    float: left;
+}
+.left img{
+    width: 38px;
+    height: 38px;
+}
+.left span{
+    vertical-align: 50%;
+}
+.center{
+    width: 60%;
+    float: left;
+}
+.footer {
+    clear: both;
+    background: pink;
+    text-align: center;
+}
+.right {
+    width: 20%;
+    float: left;
+}
