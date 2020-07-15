@@ -1,0 +1,47 @@
+body{
+    background:url("../../Day02/img/bg.png");
+}
+.center{
+    background: white;
+    width: 40%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+    border-radius: 15px;
+}
+thead th{
+    color: orange;
+    font-size: 30px;
+}
+tbody label{
+    font-size: 20px;
+}
+tbody input{
+    border:1px solid gray;
+    border-radius: 5px;
+    width: 95%;
+    height: 40px;
+    outline: none;
+}
+tfoot button{
+    border:1px solid crimson;
+    border-radius: 5px;
+    width: 95%;
+    height: 40px;
+    color: white;
+    background: crimson;
+    font-size: 20px;
+}
+tr{
+    line-height: 60px;
+}
+.footer{
+    width: 35%;
+    margin: auto;
+    font-size: 15px;
+    color: gray;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
