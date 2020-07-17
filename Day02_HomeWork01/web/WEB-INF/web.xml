@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>Demo1</servlet-name>
+        <servlet-class>ServletDemo.Demo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo1</servlet-name>
+        <url-pattern>/Demo1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Demo2</servlet-name>
+        <servlet-class>ServletDemo.Demo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo2</servlet-name>
+        <url-pattern>/Demo2</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Demo3</servlet-name>
+        <servlet-class>ServletDemo.Demo3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo3</servlet-name>
+        <url-pattern>/Demo3</url-pattern>
+    </servlet-mapping>
+</web-app>

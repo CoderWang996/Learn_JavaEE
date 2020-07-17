@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>Demo01</servlet-name>
+        <servlet-class>Servlet.Demo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo01</servlet-name>
+        <url-pattern>/Demo01</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Demo02</servlet-name>
+        <servlet-class>Servlet.Demo02</servlet-class>
+        <init-param>
+            <param-name>first</param-name>
+            <param-value>I like a girl</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Second</param-name>
+            <param-value>But she don't like me</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo02</servlet-name>
+        <url-pattern>/Demo02</url-pattern>
+    </servlet-mapping>
+</web-app>
