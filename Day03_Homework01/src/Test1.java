@@ -17,6 +17,10 @@ public class Test1 extends HttpServlet {
         System.out.println(contextPath);
         String realPath = req.getServletContext().getRealPath("/WEB-INF/classes/Test1");
         System.out.println(realPath);
+        String requestURI = req.getRequestURI();
+        System.out.println(requestURI);
+        StringBuffer requestURL = req.getRequestURL();
+        System.out.println(requestURL);
         System.out.println("------------------------------");
         //获取访问者IP
         String remoteAddr = req.getRemoteAddr();
