@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">db5</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="category" view="colnames">
+<left>1006</left>
+<top>298</top>
+<width>109</width>
+<height>191</height>
+<sql_create_table>CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="orderlist" view="colnames">
+<left>473</left>
+<top>36</top>
+<width>90</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `orderlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` varchar(30) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ou_fk1` (`uid`),
+  CONSTRAINT `ou_fk1` FOREIGN KEY (`uid`) REFERENCES `USER` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="product" view="colnames">
+<left>762</left>
+<top>304</top>
+<width>137</width>
+<height>191</height>
+<sql_create_table>CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(30) DEFAULT NULL,
+  `cid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cp_fk1` (`cid`),
+  CONSTRAINT `cp_fk1` FOREIGN KEY (`cid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="USER" view="colnames">
+<left>382</left>
+<top>322</top>
+<width>78</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `USER` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(20) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="us_pro" view="colnames">
+<left>551</left>
+<top>314</top>
+<width>103</width>
+<height>161</height>
+<sql_create_table>CREATE TABLE `us_pro` (
+  `upid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`upid`),
+  KEY `up_fk1` (`uid`),
+  KEY `up_fk2` (`pid`),
+  CONSTRAINT `up_fk1` FOREIGN KEY (`uid`) REFERENCES `USER` (`id`),
+  CONSTRAINT `up_fk2` FOREIGN KEY (`pid`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
