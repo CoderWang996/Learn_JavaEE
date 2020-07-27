@@ -1,0 +1,45 @@
+-- 创建dog表
+CREATE TABLE dog(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10)
+);
+-- 添加数据
+INSERT INTO dog(id,NAME) VALUES (NEXT VALUE FOR MYCATSEQ_GLOBAL,'哈士奇');
+-- 查询dog表
+SELECT * FROM dog;
+
+
+-- 创建cat表
+CREATE TABLE cat(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10)
+);
+-- 添加数据
+INSERT INTO cat(id,NAME) VALUES (NEXT VALUE FOR MYCATSEQ_GLOBAL,'波斯猫');
+-- 查询cat表
+SELECT * FROM cat;
+
+
+
+
+
+-- 创建apple表
+CREATE TABLE apple(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10)
+);
+-- 添加数据
+INSERT INTO apple(id,NAME) VALUES (NEXT VALUE FOR MYCATSEQ_GLOBAL,'红富士');
+-- 查询apple表
+SELECT * FROM apple;
+
+
+-- 创建banana表
+CREATE TABLE banana(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10)
+);
+-- 添加数据
+INSERT INTO banana(id,NAME) VALUES (NEXT VALUE FOR MYCATSEQ_GLOBAL,'香蕉');
+-- 查询banana表
+SELECT * FROM banana;
