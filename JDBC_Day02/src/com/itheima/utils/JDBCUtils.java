@@ -1,4 +1,4 @@
-package com.itheima02.utils;
+package com.itheima.utils;
 
 import java.io.InputStream;
 import java.sql.*;
@@ -9,23 +9,26 @@ import java.util.Properties;
  */
 public class JDBCUtils {
     //1.私有构造方法
-    private JDBCUtils(){}
+    private JDBCUtils(){};
 
-    //2.声明所需要的配置变量
+    //2.声明配置信息变量
     private static String driverClass;
     private static String url;
     private static String username;
     private static String password;
     private static Connection con;
 
-    //3.提供静态代码块。读取配置文件的信息为变量赋值，注册驱动
+    //3.静态代码块中实现加载配置文件和注册驱动
     static{
-        try {
-            //读取配置文件的信息为变量赋值
+        try{
+            //通过类加载器返回配置文件的字节流
             InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream("config.properties");
+
+            //创建Properties集合，加载流对象的信息
             Properties prop = new Properties();
             prop.load(is);
 
+            //获取信息为变量赋值
             driverClass = prop.getProperty("driverClass");
             url = prop.getProperty("url");
             username = prop.getProperty("username");
@@ -39,7 +42,7 @@ public class JDBCUtils {
         }
     }
 
-    //4.提供获取数据库连接方法
+    //4.获取数据库连接的方法
     public static Connection getConnection() {
         try {
             con = DriverManager.getConnection(url,username,password);
@@ -50,7 +53,7 @@ public class JDBCUtils {
         return con;
     }
 
-    //5.提供释放资源的方法
+    //5.释放资源的方法
     public static void close(Connection con, Statement stat, ResultSet rs) {
         if(con != null) {
             try {
@@ -78,20 +81,6 @@ public class JDBCUtils {
     }
 
     public static void close(Connection con, Statement stat) {
-        if(con != null) {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if(stat != null) {
-            try {
-                stat.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        close(con,stat,null);
     }
 }

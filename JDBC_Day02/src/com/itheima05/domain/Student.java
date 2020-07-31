@@ -1,7 +1,10 @@
-package com.itheima02.domain;
+package com.itheima05.domain;
 
 import java.util.Date;
 
+/*
+    学生的实体类
+ */
 public class Student {
     private Integer sid;
     private String name;
