@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="one">
+    <!--查找所有学生信息-->
+    <select id="findAll" resultType="domain.student">
+        select * from student
+    </select>
+    <!--根据id查询用户信息-->
+    <select id="findByid" parameterType="java.lang.Integer" resultType="domain.student">
+        select * from student where id=#{id}
+    </select>
+    <!--统计人员数量-->
+    <select id="findCount" resultType="int">
+        select count(*) from student
+    </select>
+    <!--统计男女的人员数量-->
+    <select id="findCountBysex" resultType="map">
+        select sex,count(*) from student group by sex
+    </select>
+    <!--更新学生信息-->
+    <update id="update" parameterType="domain.student">
+         update student set id=#{id},name=#{name},age=#{age},password=#{password},email=#{email},sex=#{sex} where id=#{id}
+    </update>
+    <!--通过邮箱和密码进行查询-->
+    <select id="findByEandpwd" parameterType="map" resultType="domain.student">
+         SELECT * FROM student WHERE email=#{email} AND PASSWORD=#{password}
+    </select>
+    <!--根据学生姓名模糊查询-->
+    <select id="findLikename" parameterType="String" resultType="domain.student">
+        select * from student where name like #{name}
+    </select>
+    <!--获取保存后主键列的值-->
+    <insert id="save" useGeneratedKeys="true" keyColumn="id" parameterType="domain.student" keyProperty="id">
+        insert into student values (id,#{name},#{age},#{email},#{password},#{sex})
+    </insert>
+    <!--根据id删除-->
+    <delete id="deleteByid" parameterType="java.lang.Integer">
+        delete from student where id=#{id}
+    </delete>
+</mapper>
