@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+    <!--加载外部资源配置文件-->
+    <properties resource="db.properties"/>
+    <!--日志配置-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--类别名配置
+        1、单个类别名配置
+          <typeAlias type="com.itheima.domain.User" alias="user"/>
+        2、批量配置
+            默认以类名作为别名，而且是不区分大小写
+            <package name="需要使用类别名的包"/>
+    -->
+    <typeAliases>
+        <package name="com.itheima.domain"/>
+    </typeAliases>
+    <!--配置分页插件：pageHelper-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--指定方言:
+                    指定分页的SQL语句
+            -->
+            <property name="dialectHelper" value="mysql"/>
+        </plugin>
+    </plugins>
+    <!--1、运行环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--事务配置-->
+            <transactionManager type="JDBC"/>
+            <!--数据源配置
+                POOLED:采用池的思想：用时从池中取，用完是还回池中
+                UNPOOLED：不采用池思想
+                JNDI：需要服务器的支持
+            -->
+            <dataSource type="POOLED">
+                <!--连接数据库四大基本特征-->
+                <!--
+                ${}:OGNL表达式
+                对象图导航语言
+                -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.pwd}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--2、指定映射配置文件的位置（加载映射配置文件）-->
+    <mappers>
+      <!--  <mapper resource="com/itheima/mapper/UserMapper.xml"/>-->
+        <package name="com.itheima.mapper"/>
+    </mappers>
+</configuration>

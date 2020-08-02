@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <!--通过邮箱和密码登录-->
+    <select id="findByEmailAndPwd" resultType="user">
+        select * from user where email=#{em} and password=#{pwd}
+    </select>
+
+    <!--遍历-->
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+</mapper>
