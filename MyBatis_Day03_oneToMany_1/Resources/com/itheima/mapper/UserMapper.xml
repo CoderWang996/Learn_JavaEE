@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <!--
+    一个用户可以对应多个订单
+    所以用户与订单是一对多的关系
+    需求：
+    查询所有用户姓名和其对应的订单编号
+    -->
+    <resultMap id="UserMap" type="User">
+        <result column="NAME" property="name"/>
+        <!-- 对多的配置使用<collection>
+                    property：封装类（User）对象中的集合属性(orderlists)
+                    ofType:集合对象中的泛型(Orderlist)-->
+        <collection property="orderlists" ofType="Orderlist">
+            <result column="number" property="number"/>
+        </collection>
+    </resultMap>
+    <select id="findUserAndOrder" resultMap="UserMap">
+        SELECT u.`NAME`,o.number FROM `user` u LEFT JOIN orderlist o on u.id=o.uid
+    </select>
+</mapper>

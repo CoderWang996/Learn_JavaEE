@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <!--
+    一个用户可以购买多个品种商品
+    一个品种商品也可以被多个用户购买
+    所以用户和商品是多对多的关系
+    需求：
+    查询所有用户编号，姓名和其购买的商品
+    -->
+    <resultMap id="UserMap" type="User">
+        <id column="id" property="id"/>
+        <result column="NAME" property="name"/>
+        <!-- 对多的配置使用<collection>
+                    property：封装类（User）对象中的集合属性(orderlists)
+                    ofType:集合对象中的泛型(Orderlist)-->
+        <collection property="productList" ofType="product">
+            <result column="pn" property="name"/>
+        </collection>
+    </resultMap>
+    <select id="findUserAndProduct" resultMap="UserMap">
+        SELECT u.id,u.`NAME`,p.`NAME` pn FROM user u LEFT JOIN us_pro up ON u.id=up.uid LEFT JOIN product p ON p.id=up.pid
+    </select>
+</mapper>

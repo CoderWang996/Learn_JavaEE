@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.OrderMapper">
+
+    <!--
+    订单与用户的关系为一对一
+    需求：
+    查找订单编号和其对应的用户姓名和年龄
+    -->
+    <resultMap id="OrderMap" type="Orderlist">
+        <result column="number" property="number"/>
+        <!--对一配置的标签：<association>
+                   property：封装对象（Orderlist）中的对象属性（user）
+                   javaType:对象属性的类型-->
+        <association property="u" javaType="User" select="com.itheima.mapper.UserMapper.findById" column="uid"/>
+    </resultMap>
+    <select id="findOrderAndUser" resultMap="OrderMap">
+        SELECT * FROM orderlist
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OneToOne">
+    <!--手动指定查询与对应对象属性之间的一一映射关系-->
+    <!--查看所有身份证号和其对应的人名-->
+    <resultMap id="cardMap" type="domain.card">
+        <id column="id" property="id"/>
+        <result column="number" property="number"/>
+        <association property="p" javaType="domain.person">
+            <!--
+            association:配置被包含对象的映射关系
+            property+被包含对象的变量名
+            javaType+被包含对象的数据类型
+            -->
+            <id column="pid" property="id"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="cardMap">
+       SELECT * FROM card c,person p WHERE c.pid=p.id
+    </select>
+</mapper>
