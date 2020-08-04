@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联查询所有订单信息，及其用户信息和所包含商品信息-->
+    <!--查询所有用户所包含商品信息-->
+<mapper namespace="com.itheima.mapper.ItemsMapper">
+    <select id="findById" resultType="Items" parameterType="int">
+        SELECT items.* FROM
+        `user`
+        LEFT JOIN orders ON orders.user_id = `user`.id
+        LEFT JOIN orderdetail ON orderdetail.orders_id = orders.id
+        LEFT JOIN items ON orderdetail.items_id = items.id
+        WHERE
+        `user`.id = #{id}
+    </select>
+</mapper>

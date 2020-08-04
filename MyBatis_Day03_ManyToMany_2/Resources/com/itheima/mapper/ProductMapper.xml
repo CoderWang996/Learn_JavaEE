@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.ProductMapper">
+    <!--根据商品编号查找-->
+    <select id="findByUid" parameterType="int" resultType="product">
+        SELECT * FROM product p , us_pro up where p.id=up.pid AND up.uid=#{uid}
+    </select>
+</mapper>

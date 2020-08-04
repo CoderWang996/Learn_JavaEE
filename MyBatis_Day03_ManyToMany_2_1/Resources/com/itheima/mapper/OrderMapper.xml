@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联查询所有订单信息，及其用户信息和所包含商品信息-->
+<mapper namespace="com.itheima.mapper.OrderMapper">
+    <resultMap id="OrderMap" type="Orders">
+        <id column="id" property="id"/>
+        <result column="user_id" property="user_id"/>
+        <result column="number" property="number"/>
+        <result column="createtime" property="createtime"/>
+        <result column="note" property="note"/>
+        <collection property="users" ofType="User" select="com.itheima.mapper.UserMapper.findByUid" column="user_id"/>
+    </resultMap>
+    <!--查询所有订单信息-->
+    <select id="Test4_find" resultMap="OrderMap">
+        SELECT * FROM orders
+    </select>
+</mapper>

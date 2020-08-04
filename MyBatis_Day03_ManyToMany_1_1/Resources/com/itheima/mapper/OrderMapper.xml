@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.OrderMapper">
+    <resultMap id="OrderMap" type="Orders">
+        <id column="id" property="id"/>
+        <result column="user_id" property="user_id"/>
+        <result column="number" property="number"/>
+        <result column="createtime" property="createtime"/>
+        <result column="note" property="note"/>
+        <collection property="users" ofType="User">
+            <id column="id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="birthday" property="birthday"/>
+            <result column="sex" property="sex"/>
+            <result column="address" property="address"/>
+            <collection property="items" ofType="Items">
+                <result column="name" property="name"/>
+                <result column="detail" property="detail"/>
+                <result column="price" property="price"/>
+                <result column="pic" property="pic"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <!--查询所有订单信息，及其用户信息和所包含商品信息-->
+    <select id="Test4_find" resultMap="OrderMap">
+        SELECT
+        orders.*,
+        user.*,
+        items.*
+        FROM
+        orders
+        LEFT JOIN `user` ON orders.user_id = `user`.id
+        LEFT JOIN orderdetail ON orderdetail.orders_id = orders.id
+        LEFT JOIN items ON orderdetail.items_id = items.id
+    </select>
+</mapper>
