@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性的操作</title>
+    <style>
+        .aColor{
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+<a>来打我呀</a>
+</body>
+<script>
+    //添加属性
+    let a = document.getElementsByTagName("a")[0];
+    a.setAttribute("href","http://baidu.com/");
+    //获取属性
+    let value = a.getAttribute("href");
+    // alert(value);
+    //删除属性
+    // a.removeAttribute("href");
+    //添加样式
+    // a.style.color="red";
+    a.className="aColor";
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS数组</title>
+</head>
+<body>
+
+</body>
+<script>
+    //定义数组
+    let arr=[1,2,3];
+    //遍历数组
+    for (let i=0;i<arr.length;i++){
+        document.write(arr[i]+"<br/>");
+    }
+    document.write("==================+<br/>");
+    //JS复制数组
+    let arr2=[...arr];
+    for (let i=0;i<arr2.length;i++){
+        document.write(arr2[i]+"<br/>");
+    }
+    document.write("==================+<br/>");
+    //JS合并数组
+    let arr3=[...arr,...arr2];
+    for (let i=0;i<arr3.length;i++){
+        document.write(arr3[i]+"<br/>");
+    }
+    document.write("==================+<br/>");
+    //JS把字符串转成数组
+    let arr4=[..."我是字符串"];
+    for (let i=0;i<arr4.length;i++){
+        document.write(arr4[i]+"<br/>");
+    }
+    //JS中的数组长度可变
+    let array=new Array(2);
+    array[4]=4;
+    alert("定义时数组长度为2,给数组的四索引赋值为4后array[4]="+array[4]+",没有赋值访问数值为空例如array[5]="+array[5]);
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+<div>事件：</div>
+<div>
+    &nbsp;&nbsp;&nbsp;事件源<br/>
+    &nbsp;&nbsp;&nbsp;触发事件时机<br/>
+    &nbsp;&nbsp;&nbsp;触发事件后的响应（回调函数）<br/>
+    <button id="id1">点我呀</button>
+    <form id="form">
+        <table>
+            <th>表头一</th>
+            <th>表头二</th>
+        </table>
+        <button type="submit">提交</button>
+    </form>
+    改变域内容触发事务：<input id="input" type="text">
+    元素获取焦点触发事务：<input id="input2" type="text">
+</div>
+</body>
+<script>
+    //给id为id1的button标签添加鼠标点击时触发事务
+  document.getElementById("id1").onclick=function () {
+       alert("你点我干熊的！");
+   };
+  //给form表单标签添加提交时触发的事务
+   document.getElementById("form").onsubmit=function () {
+       alert("已提交");
+   };
+   //为input1标签添加用户改变域内容时触发的事务
+    document.getElementById("input").onchange=function () {
+        alert("数据已改变");
+    };
+    //为input1标签添加元素失去焦点时触发的事务
+    document.getElementById("input").onblur=function () {
+        alert("不再写点啥了吗？");
+    };
+    //为第二个输入框添加元素获取焦点时触发的事务
+    document.getElementById("input2").onfocus=function () {
+        alert("来了老弟，写点什么吧")
+    };
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的增删改查</title>
+</head>
+<body>
+<select id="PUBG">
+    <option>--请选择--</option>
+    <option>M416</option>
+    <option>AWM</option>
+    <option id="M24">M24</option>
+</select>
+</body>
+<script>
+    //指定标签名创建新的元素
+    let option = document.createElement("option");
+    //为option添加文本内容
+    option.innerText="M16A4";
+    //将子元素添加到父元素中
+    let pubg = document.getElementById("PUBG");
+    pubg.appendChild(option);
+/*    //通过父元素删除子元素
+    pubg.removeChild(option);*/
+    //用新元素代替子元素
+    let option2 = document.createElement("option");
+    option2.innerText="AKM";
+    pubg.replaceChild(option2,option);
+    //给父标签添加一个元素（MK47）
+    let op2= document.createElement("option");
+    op2.innerText="MK47";
+    pubg.appendChild(op2);
+    //把M24换成M762
+    let M24=document.getElementById("M24");
+    M24.innerText="M762";
+</script>
+</html>

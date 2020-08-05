@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+方法声明关键字：function<br/>
+方法声明无需指定返回值类型<br/>
+方法的参数无需使用变量声明的关键字let或var<br/>
+注意：方法名和参数列表一致而方法体不一致时，JS执行的顺序为自下而上<br/>
+</body>
+<script>
+    //无参无返回值
+    function println() {
+        document.write("println方法执行了<br/>");
+    }
+    //调用println方法
+    println();
+    //有参有返回值
+    function getSum(n1, n2) {
+        return n1+n2;
+    }
+    //调用getSum方法；
+    document.write(getSum(98,1)+"<br/>");
+    //可变参数 对n个数字进行求和
+    function getSum(...n) {
+        let sum=0;
+        for (let i=0;i<n.length;i++){
+            sum+=n[i];
+        }
+        return sum;
+    }
+    //调用getSum方法；
+    document.write(getSum(900,98,1)+"<br/>");
+
+</script>
+</html>

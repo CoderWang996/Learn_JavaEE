@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typeof</title>
+</head>
+<body>
+typeof用来测试数据类型<br/>
+</body>
+<script>
+    let l1=true;
+    document.write(typeof (l1)+"<br/>");//boolean
+    let l2=null;
+    document.write(typeof (l2)+"<br/>");//object js原始错误
+    let l3=12;
+    document.write(typeof (l3)+"<br/>");//number
+    let l4="是字符串吗";
+    document.write(typeof (l4)+"<br/>");//String
+    let l5=5n;//数字后+n为大整形
+    document.write(typeof (l5)+"<br/>");//bigint
+    //不定义直接输出类型为undefined
+    document.write(typeof (l6)+"<br/>");//undefined
+
+</script>
+</html>

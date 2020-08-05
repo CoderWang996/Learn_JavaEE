@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的获取</title>
+</head>
+<body>
+<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div class="bottom">div3</div>
+<div name="div">div4</div>
+<div name="div">div5</div>
+</body>
+<script>
+    //根据id属性值获取元素
+    let div1 = document.getElementById("div1");
+    alert(div1.innerText);
+    //根据标签名称获取元素对象们，用数组接收
+    let divs1 = document.getElementsByTagName("div");
+    alert(divs1.length);
+    //根据name属性获取元素对象们，用数组接收
+    let divs2 = document.getElementsByName("div");
+    alert(divs2.length);
+    //根据class属性获取元素对象们，用数组接收
+    let divs3 = document.getElementsByClassName("bottom");
+    alert(divs3.length);
+</script>
+</html>
