@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象_Map</title>
+</head>
+<body>
+
+</body>
+<script>
+    //创建Map对象
+    let map = new Map();
+    //添加元素
+    map.set("a","aaa");
+    map.set("b","bbb");
+    map.set("c","ccc");
+    map.set("d","ddd");
+    //获取集合长度
+    document.write(map.size+"<br/>");
+    //根据key获取value  get()
+    let a = map.get("a");
+    document.write(a+"<br/>");
+    //获取迭代对象 entries()
+    let entries = map.entries();
+    for (let i=0;i<map.size;i++){
+        document.write(entries.next().value+" ");
+    }
+    document.write("<br/>");
+    //根据key删除键值对
+    map.delete("b");
+    let entries2 = map.entries();
+    for (let i=0;i<map.size;i++){
+        document.write(entries2.next().value+" ");
+    }
+</script>
+</html>

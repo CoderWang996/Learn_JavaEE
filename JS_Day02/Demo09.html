@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+</body>
+<script>
+    //json是一种数据的格式 {key:value,...}
+    let user={userName:"admin",pwd:1234,age:21};
+    alert(user.userName);
+    //注意：JSON中[]范围>{}范围
+    let userList=[{userName:"admin",pwd:1234,age:21},{userName: "张三",pwd: 232,age: 18}];
+    alert(userList[1].age);
+    //定义天气对象
+    let weather={
+        city:"合肥",
+        data:"2020-0807",
+        wenDu:"20℃~38℃",
+        shiDu:"20%"
+    };
+    //将天气对象转换为JSON格式的字符串
+    let s = JSON.stringify(weather);
+    document.write(s+"<br/>");
+    //将JSON格式字符串解析成JS对象
+    let weather2 = JSON.parse(s);
+    document.write("城市"+weather2.city+"<br/>");
+    document.write("日期"+weather2.data+"<br/>");
+    document.write("温度"+weather2.wenDu+"<br/>");
+    document.write("湿度"+weather2.shiDu+"<br/>");
+</script>
+</html>

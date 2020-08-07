@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象_Set</title>
+</head>
+<body>
+
+</body>
+<script>
+    //创建Set集合对象
+    let set = new Set();
+    //添加元素
+    set.add("aaa");
+    set.add("bbb");
+    set.add("ccc");
+    set.add("ddd");
+    //获取集合长度size
+    document.write(set.size+"<br/>");
+    //获取迭代器对象keys()  获取值.next().value
+    //迭代器对象必须写在循环外面
+    let k=set.keys();
+    for (let i=0;i<set.size;i++){
+        document.write(k.next().value+" ");
+    }
+    document.write("<br/>");
+    //删除指定元素,并遍历输出删除后的结果
+    set.delete("ddd");
+    let k2=set.keys();
+    for (let i=0;i<set.size;i++){
+        document.write(k2.next().value+" ");
+    }
+</script>
+</html>

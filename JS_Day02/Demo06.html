@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象_Array</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr=[1,2,3,4,5,6,7];
+    let  arr2=[2,234,25,12,12,341];
+    //添加一个元素到数组末尾
+    arr.push(8);
+    document.write(arr+"<br/>");
+    //删除数组末尾的元素
+    arr.pop();
+    document.write(arr+"<br/>");
+    //删除数组最前面的元素
+    arr.shift();
+    document.write(arr+"<br/>");
+    //判断数组中是否包含指定元素
+    document.write(arr.includes(6)+"<br/>");
+    //翻转元素
+    document.write(arr.reverse()+"<br/>");
+    //对数组元素排序  默认升序
+    document.write(arr2.sort()+"<br/>");
+    //对数组元素排序后翻转即降序
+    document.write(arr2.sort().reverse()+"<br/>");
+</script>
+</html>

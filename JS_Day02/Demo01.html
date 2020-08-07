@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象1</title>
+</head>
+<body>
+
+</body>
+<script>
+    //定义Student类
+    class Student{
+        //定义属性
+        constructor(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        //show方法
+        show(){
+            document.write(this.name+","+this.age+"<br/>");
+        }
+    }
+    let student = new Student("王晨阳",21);
+    student.show();
+    //定义Person类
+    let Person= {
+        //属性
+        Pname:"王二麻子",
+        age:23,
+        gender:"男",
+        eat: function () {
+            document.write("吃饭饭。。。");
+        }
+    };
+    document.write(Person.Pname+","+Person.age+","+Person.gender+"<br/>");
+
+    Person.eat();
+
+
+</script>
+</html>

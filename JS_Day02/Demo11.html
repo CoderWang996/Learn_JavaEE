@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口对象</title>
+    //加载事件 head标签内
+    <script>
+        window.onload=function () {
+            alert(document.getElementById("div").innerText);
+        }
+    </script>
+</head>
+<body>
+<!-- 定时器
+     唯一标识 setTimeout(功能，毫秒值)：设置一次性定时器 。
+     clearTimeout(标识)：取消一次性定时器。
+    唯一标识 setInterval(功能，毫秒值)：设置循环定时器。
+    clearInterval(标识)：取消循环定时器。
+     加载事件
+    window.onload：在页面加载完毕后触发此事件的功能。-->
+<div id="div">Ok</div>
+</body>
+<script>
+     function fub() {
+         alert("快起床吧");
+     }
+     //设置一次次定时器
+     let d1 = setTimeout("fub()",4000);
+     //取消一次性定时器
+    clearTimeout(d1);
+    //数字循环定时器
+    let interval = setInterval("fub()",3000);
+    //取消循环定时器
+    clearInterval(interval);
+    //加载事件<body>下
+    let div = document.getElementById("div");
+    alert(div.innerText);
+</script>
+</html>

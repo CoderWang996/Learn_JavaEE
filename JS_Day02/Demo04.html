@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象_String</title>
+</head>
+<body>
+
+</body>
+<script>
+    //创建字符串对象
+    let s1 = new String("hello");
+    document.write(s1+"<br/>");
+    //直接赋值
+    let s2="你好";
+    let s3="1,4,3,4,5";
+    document.write(s2+"<br/>");
+    //获取字符串长度
+    document.write(s2.length+"<br/>");
+    //获取指定索引处的字符
+    document.write(s1.charAt(2)+"<br/>");
+    //获取指定字符串的索引位置
+    document.write(s1.indexOf('o')+"<br/>");
+    //indexof左右  lastindexof右左
+    document.write(s2.lastIndexOf("好")+"<br/>");
+    //根据指定索引范围截取字符串（含头不含尾）
+    document.write(s1.substring(1,3)+"<br/>");
+    //根据指定规则切割字符串，返回数组
+    let arr = s3.split(",");
+    for (let i=0;i<arr.length;i++){
+        document.write(arr[i]+"<br/>");
+    }
+    //使用新字符串代替旧的字符串
+    document.write(s2.replace("你","好")+"<br/>");
+</script>
+</html>

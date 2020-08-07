@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+
+</body>
+<script>
+        //定义Student类
+        class Student{
+            //定义属性
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            //eat方法
+            eat(){
+                document.write("在食堂吃饭...");
+            }
+        }
+        //定义Worker类继承Student
+    class Worker extends  Student{
+            constructor(name,age,salary){
+                super(name,age);
+                this.salary=salary;
+            }
+            show(){
+                document.write(this.name+","+this.age+","+this.salary);
+            }
+    }
+    let worker = new Worker("二秃子",32,6000+"<br/>");
+        worker.show();
+        worker.eat();
+</script>
+</html>

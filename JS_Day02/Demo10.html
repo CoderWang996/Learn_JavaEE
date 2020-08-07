@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单校验</title>
+</head>
+<body>
+<div class="login-form-wrap">
+    <h1>黑马程序员</h1>
+    <form class="login-form" action="#" id="regist" method="get" autocomplete="off">
+        <label>
+            <input type="text" id="username" name="username" placeholder="Username..." value="">
+        </label>
+        <label>
+            <input type="password" id="password" name="password" placeholder="Password..." value="">
+        </label>
+        <input type="submit" value="注册">
+    </form>
+</div>
+</body>
+<script>
+    //1.为表单绑定提交事件
+    document.getElementById("regist").onsubmit = function() {
+        //2.获取填写的用户名和密码
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        //3.判断用户名是否符合规则  4~16位纯字母
+        let reg1 = /^[a-zA-Z]{4,16}$/;
+        if(!reg1.test(username)) {
+            alert("用户名不符合规则，请输入4到16位的纯字母！");
+            //阻止表单提交
+            return false;
+        }
+
+        //4.判断密码是否符合规则  6位纯数字
+        let reg2 = /^[\d]{6}$/;
+        if(!reg2.test(password)) {
+            alert("密码不符合规则，请输入6位纯数字的密码！");
+            //阻止表单提交
+            return false;
+        }
+
+        //5.如果所有条件都不满足，则提交表单
+        return true;
+    }
+
+</script>
+</html>

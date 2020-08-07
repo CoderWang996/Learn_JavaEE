@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多选&&复选&&反选</title>
+</head>
+<body>
+<table align="center" border="1" width="600px">
+    <tr>
+        <th>请选择</th>
+        <th>枪名</th>
+        <th>子弹口径</th>
+        <th>弹夹容量</th>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs" value="1"/></td>
+        <td>M416</td>
+        <td>5.56mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs" value="2"/></td>
+        <td>M16A4</td>
+        <td>5.56mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs" value="3"/></td>
+        <td>M762</td>
+        <td>7.62mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs" value="4"/></td>
+        <td>S12K</td>
+        <td>12mm</td>
+        <td>5</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs" value="5"/></td>
+        <td>M24</td>
+        <td>7.62mm</td>
+        <td>5</td>
+    </tr>
+    <tr align="center">
+        <td><a href="JavaScript:fun1();">全选</a></td>
+        <td><a href="JavaScript:fun2();">反选</a></td>
+        <td><a href="JavaScript:fun3();">全不选</a></td>
+        <td><a href="JavaScript:fun4();">复选项框的值</a></td>
+    </tr>
+</table>
+<script>
+    //全选
+    function fun1() {
+        //根据名称name获取元素对象  返回数组
+      let chs = document.getElementsByName("chs");
+      //遍历数组  让复选框状态为true
+      for (let i=0;i<chs.length;i++){
+          chs[i].checked=true;
+      }
+    }
+    //反选
+    function fun2() {
+        //获取所有要操作的复选框
+        let chs = document.getElementsByName("chs");
+        //遍历数组 让复选框状态取反
+        for (let i=0;i<chs.length;i++){
+            chs[i].checked=!chs[i].checked;
+        }
+    }
+    //全不选
+    function fun3() {
+        //根据名称name获取元素对象  返回数组
+        let chs = document.getElementsByName("chs");
+        //遍历数组  让复选框状态为false
+        for (let i=0;i<chs.length;i++){
+            chs[i].checked=false;
+        }
+    }
+    //获取值
+    function fun4() {
+        //根据名称name获取元素对象  返回数组
+        let chs = document.getElementsByName("chs");
+        //定义一个数组获取复选框的值
+        let arr=new Array();
+        //遍历数组
+        for (let i=0;i<chs.length;i++){
+            //如果已选中就获取值
+            if (chs[i].checked){
+                arr.push(chs[i].value);
+            }
+        }
+        alert(arr);
+    }
+
+</script>
+</body>
+</html>
