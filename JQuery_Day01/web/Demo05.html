@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器选择器</title>
+</head>
+<body>
+<div>div1</div>
+<div id="div2">div2</div>
+<div>div3</div>
+<div>div4</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //首元素选择器
+    let div1 = $("div:first");
+    alert(div1.html());
+    //尾元素选择器
+    let div2 = $("div:last");
+    alert(div2.html());
+    //非元素选择器
+    let div3 = $("div:not(#div2)");
+    alert(div3.length);
+    //偶数选择器
+    let even = $("div:even");
+    alert(even.length+" "+even[1].innerHTML);
+    //奇数选择器
+    let odd = $("div:odd");
+    alert(odd.length+" "+odd[1].innerHTML);
+    //等于索引选择器
+    let ix = $("div:eq(2)");
+    alert(ix.html());
+    //大于索引选择器
+    let gt = $("div:gt(2)");
+    alert(gt.length);
+    alert(gt[1].innerHTML);
+    //小于索引选择器
+    let lt = $("div:lt(2)");
+    alert(lt.length);
+    alert(lt[0].innerHTML);
+</script>
+</html>

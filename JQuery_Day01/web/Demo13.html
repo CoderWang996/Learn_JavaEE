@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM_操作样式</title>
+    <style>
+        .cls1{
+            background: pink;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<div style="border: 1px solid red;" id="div">我是div</div>
+<input type="button" id="btn1" value="获取div的样式"> &nbsp;&nbsp;
+<input type="button" id="btn2" value="设置div的背景色为蓝色">&nbsp;&nbsp;
+<br><br><br>
+<input type="button" id="btn3" value="给div设置cls1样式"> &nbsp;&nbsp;
+<input type="button" id="btn4" value="给div删除cls1样式"> &nbsp;&nbsp;
+<input type="button" id="btn5" value="给div设置或删除cls1样式"> &nbsp;&nbsp;
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //获取css样式
+    $("#btn1").click(function () {
+        alert($("#div").css("border"));
+    });
+    //设置css样式
+    $("#btn2").click(function () {
+        $("#div").css("background","blue");
+    });
+    //给指定的对象添加样式类名
+    $("#btn3").click(function () {
+        $("#div").addClass("cls1");
+    });
+    //给指定对象删除样式类名
+    $("#btn4").click(function () {
+        $("#div").removeClass("cls1");
+    });
+    //如果没有就添加有就删除
+    $("#btn5").click(function () {
+        $("#div").toggleClass("cls1");
+    });
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机选女友</title>
+    <style>
+        body{
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+<!-- 小图 -->
+<div style="background-color:red;border: dotted; height: 100px; width: 100px">
+    <img src="img/01.jpg" id="small" style="width: 100px; height: 100px;">
+</div>
+<!-- 大图 -->
+<div style="border: double ;width: 600px; height: 600px; position: absolute; left: 500px; top:10px">
+    <img src="" id="big" style="width: 600px; height: 600px; display:none;">
+</div>
+
+<!-- 开始和结束按钮 -->
+<input id="startBtn" type="button" style="width: 150px;height: 150px; font-size: 20px" value="开始">
+<input id="stopBtn" type="button" style="width: 150px;height: 150px; font-size: 20px" value="停止">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //定义一个数组 存储图片
+    let imgArr=["img/01.jpg","img/02.jpg","img/03.jpg","img/04.jpg","img/05.jpg","img/06.jpg","img/07.jpg","img/08.jpg","img/09.jpg","img/10.jpg","img/11.jpg","img/12.jpg"];
+    //定义计时器变量
+    let count=0;
+    //定义计时器对象
+    let time=null;
+    //声明图片路径变量
+    let imgSrc="";
+    //为开始按钮绑定单击事件
+    $("#startBtn").click(function () {
+        //禁用开始按钮
+        $("#startBtn").prop("disabled",true);
+        //启用停止按钮
+        $("#stopBtn").prop("disabled",false);
+        //设置循环定时器，循环显示图片（计数自增）
+        //定时器本来就可以实现循环  所以定时器内部无需再使用for循环
+        time=setInterval(function () {
+            //循环获取图片路径
+            let index=count%imgArr.length;
+            //将当前图片显示在小图片上
+            imgSrc=imgArr[index];
+            $("#small").prop("src",imgSrc);
+            //10.计数器自增
+            count++;
+        },50);
+    });
+    //为停止按钮绑定单机事件（取消定时器  设置按钮状态  将图片展示在大图片上）
+    $("#stopBtn").click(function () {
+       clearInterval(time);
+        //启用开始按钮
+        $("#startBtn").prop("disabled",false);
+        //禁用停止按钮
+        $("#stopBtn").prop("disabled",true);
+        //14.将图片显示到大图片上
+        $("#big").prop("src",imgSrc);
+        $("#big").prop("style","width: 600px; height: 600px;");
+    });
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本选择器</title>
+</head>
+<body>
+<div id="div1">div1</div>
+<div class="div">div2</div>
+<div class="div">div3</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //元素选择器
+    let divs = $("div");
+    // alert(divs.length);
+    //id选择器
+    let div1 = $("#div1");
+    // alert(div1.html());
+    //类选择器
+    let divs2 = $(".div");
+    alert(divs2.length);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM_操作属性</title>
+</head>
+<body>
+<input type="text" id="username">
+<br>
+<input type="button" id="btn1" value="获取输入框的id属性">  &nbsp;&nbsp;
+<input type="button" id="btn2" value="给输入框设置value属性">
+<br><br>
+
+<input type="radio" id="gender1" name="gender">男
+<input type="radio" id="gender2" name="gender">女
+<br>
+<input type="button" id="btn3" value="选中女">
+<br><br>
+
+<select>
+    <option>---请选择---</option>
+    <option id="bk">本科</option>
+    <option id="zk">专科</option>
+</select>
+<br>
+<input type="button" id="btn4" value="选中本科">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //按钮1：获取输入框的id属性
+    $("#btn1").click(function () {
+        alert($("#username").attr("id"));
+    });
+    //按钮2：给输入框设置value属性
+    $("#btn2").click(function () {
+        $("#username").attr("value","隔壁老王")
+        alert("设置成功！");
+    });
+    //按钮3：选中女
+    $("#btn3").click(function () {
+        $("#gender2").prop("checked","true");
+    });
+    //按钮4：选中本科
+    $("#btn4").click(function () {
+        $("#bk").prop("selected","true");
+    });
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层级选择器</title>
+</head>
+<body>
+<div>
+    <span>s1
+        <span>s1-1</span>
+        <span>s1-2</span>
+    </span>
+    <span>s2</span>
+</div>
+<div></div>
+<p>p1</p>
+<p>p2</p>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //后迭代器
+    let sps = $("div span");
+    alert(sps.length);
+    //子选择器
+    alert($("div> span").length);
+    //兄弟选择器 相邻的下一个
+    alert($("div+p").length);
+    //兄弟选择器 相邻的所有
+    alert($("div~p").length);
+
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的切换</title>
+</head>
+<body>
+<!--事件的切换：需要给同一个事件绑定多个事件，而且-->
+<div id="div">还是div</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //单独定义
+/*    $("#div").mouseover(function () {
+        //背景色：粉色
+        $("#div").css("background","pink");
+    });
+    $("#div").mouseout(function () {
+        //背景色：绿色
+        $("#div").css("background","green");
+    });*/
+    //链式定义
+    $("#div").mouseover(function () {
+        //背景色：粉色
+        $(this).css("background","pink");
+    }).mouseout(function () {
+        //背景色：绿色
+        $(this).css("background","green");
+    });
+
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的使用</title>
+</head>
+<body>
+<input type="button" id="bt" value="点我呀">
+<br/>
+<input type="button" id="bt2" value="解绑">
+<br/>
+<input type="text" id="input">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //单机事件
+    $("#bt").click(function () {
+        alert("点我干熊的！");
+    });
+    //解绑单击事件  绑定开启事件on 解除用off
+    $("#bt2").on("click",function () {
+        $("#bt").off("click");
+    });
+    //获取焦点事件
+/*    $("#input").focus(function () {
+        alert("来都来了，写点什么吧")
+    });*/
+    //失去焦点事件
+    $("#input").blur(function () {
+        alert("欢迎下次光临");
+    });
+</script>
+</html>

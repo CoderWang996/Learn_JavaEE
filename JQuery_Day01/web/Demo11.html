@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM_操作文本</title>
+</head>
+<body>
+<div id="div">还是div</div>
+<input type="button" id="bt1" value="获取">
+<input type="button" id="bt2" value="设置">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //获取标签的文本内容
+    $("#bt1").click(function () {
+        alert($("#div").html());
+    });
+    //设置标签的文本
+    $("#bt2").click(function () {
+        $("#div").html("真的是div啊");
+        alert("设置成功");
+    });
+</script>
+</html>

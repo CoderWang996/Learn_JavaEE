@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+</head>
+<body>
+<input type="text">
+<input type="password">
+<input type="password">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //1.属性名选择器   $("元素[属性名]")
+    let ip1 = $("input[type]");
+    alert(ip1.length);
+    //2.属性值选择器   $("元素[属性名=属性值]")
+    let ip2 = $("input[type='text']");
+    alert(ip2.length);
+    let ip3 = $("input[type='password']");
+    alert(ip3.length);
+</script>
+</html>

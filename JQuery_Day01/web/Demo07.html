@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象转换</title>
+</head>
+<body>
+<div id="div">还是div</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //将JS对象转换为JQuery对象
+    let JsDiv = document.getElementById("div");
+    alert($(JsDiv).html());
+    //JQuery根据id属性获取值
+    let div = $("#div");
+    alert(div.html());
+    //将JQuery对象转换为JS对象
+    alert(div[0].innerText);
+    alert(div.get(0).innerText);
+
+</script>
+</html>

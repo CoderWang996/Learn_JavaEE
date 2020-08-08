@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框</title>
+</head>
+<body>
+<table align="center" border="1" width="600px">
+    <tr>
+        <th>请选择</th>
+        <th>枪名</th>
+        <th>子弹口径</th>
+        <th>弹夹容量</th>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs"/></td>
+        <td>M416</td>
+        <td>5.56mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs"/></td>
+        <td>M16A4</td>
+        <td>5.56mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs"/></td>
+        <td>M762</td>
+        <td>7.62mm</td>
+        <td>30</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs"/></td>
+        <td>S12K</td>
+        <td>12mm</td>
+        <td>5</td>
+    </tr>
+    <tr align="center">
+        <td><input type="checkbox" name="chs"/></td>
+        <td>M24</td>
+        <td>7.62mm</td>
+        <td>5</td>
+    </tr>
+    <tr align="center">
+        <td><input type="button" id="selectAll" value="全选"></td>
+        <td><input type="button" id="selectNone" value="全不选"></td>
+        <td><input type="button" id="reverse" value="反选"></td>
+        <td><input type="button" id="delete" value="删除"></td>
+    </tr>
+</table>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //全选
+    $("#selectAll").click(function () {
+        $("input[name='chs']").prop("checked",true);
+    });
+    //全不选
+    $("#selectNone").click(function () {
+        $("input[name='chs']").prop("checked",false);
+    });
+    //反选
+    $("#reverse").click(function () {
+        let cb= $("input[name='chs']");
+        for (let i=0;i<cb.length;i++){
+           $(cb[i]).prop("checked",!$(cb[i]).prop("checked"));
+        }
+    });
+</script>
+</html>

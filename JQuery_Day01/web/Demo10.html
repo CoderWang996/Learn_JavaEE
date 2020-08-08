@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+</head>
+<body>
+<input type="button" id="bt" value="遍历列表项">
+<ul>
+    <li>M416</li>
+    <li>AKM</li>
+    <li>QBZ95</li>
+    <li>S12k</li>
+</ul>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //传统方式
+    $("#bt").click(function () {
+        let li= $("li");
+        for (let i=0;li.length;i++){
+            alert(i+":"+li[i].innerHTML);
+        }
+    });
+    //对象.each()
+    $("#bt").click(function () {
+        $("li").each(function (i,ele) {
+            alert(i+":"+ele.innerText);
+        });
+    });
+    //$.each()方法
+    $("#bt").click(function () {
+        $.each($("li"),function (index,ele) {
+            alert(index+":"+ele.innerHTML);
+        });
+    });
+    //for of方式
+    $("#bt").click(function(){
+        let lis = $("li");
+        for(ele of lis){
+            alert(ele.innerHTML);
+        }
+    });
+</script>
+</html>

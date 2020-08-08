@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单属性选择器</title>
+</head>
+<body>
+<input type="text" id="i1" disabled>
+<input type="text" >
+<input type="radio" name="gender" value="men" checked>男
+<input type="radio" name="gender" value="women">女
+<input type="checkbox" name="hobby" value="study" checked>学习
+<input type="checkbox" name="hobby" value="sleep" checked>睡觉
+<select>
+    <option>---请选择---</option>
+    <option selected>本科</option>
+    <option>专科</option>
+</select>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //可用选择器
+    let enable = $("input:enabled");
+    alert(enable.length);
+    //不可用选择器
+    let disabled = $("input:disabled");
+    alert(disabled.length);
+    //单选（复选框中已选中的）
+    let checked = $("input:checked");
+    alert(checked.length);
+    alert(checked[1].value);
+    //下拉框被选中的元素
+    let selected = $("select option:selected");
+    alert(selected.html());
+</script>
+</html>
