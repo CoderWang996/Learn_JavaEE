@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<form autocomplete="off">
+    姓名：<input type="text" id="username">
+    <span id="uSpan"></span>
+    <br>
+    密码：<input type="password" id="password">
+    <br>
+    <input type="submit" value="注册">
+</form>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //为用户名绑定键盘松开触发的事件
+    $("#username").keyup(function () {
+        //获取输入框内的值
+        let username = $("#username").val();
+        //1.请求方式
+        $.post(
+            //2.请求的URL路径
+            'userServlet',
+            //3.获取请求参数
+            'username='+username,
+            //4.回调函数
+            function (data) {
+                //5.获取响应数据
+                $("#uSpan").html(data);
+            },
+            //6.指定响应数据类型
+            'text'
+        );
+    });
+</script>
+</html>

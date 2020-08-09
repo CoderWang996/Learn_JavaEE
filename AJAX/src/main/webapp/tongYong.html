@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<form autocomplete="off">
+    姓名：<input type="text" id="username">
+    <span id="uSpan"></span>
+    <br>
+    密码：<input type="password" id="password">
+    <br>
+    <input type="submit" value="注册">
+</form>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //为用户绑定键盘松开触发的事件
+    $("#username").keyup(function () {
+        //获取键盘录入的username
+        let username = $("#username").val();
+        //JQuery通用的AJAX格式：
+        $.ajax({
+            //1.设置提交方式
+            type: 'POST',
+            //2.设置提交的URL路径
+            url: 'userServlet',
+            //3.设置请求参数
+            data: 'username=' + username,
+            //4.设置成功的回调函数
+            success: function (data) {
+                //5.获取响应类型
+                $("#uSpan").html(data);
+            },
+            //6.设置响应数据类型
+            dataType: 'text',
+            //设置失败的回调函数
+            error: function () {
+                alert("操作失败！")
+            }
+        });
+    });
+</script>
+</html>
