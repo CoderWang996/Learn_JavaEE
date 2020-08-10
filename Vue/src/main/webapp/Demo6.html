@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单绑定</title>
+</head>
+<body>
+<!--v-model:双向绑定事件-->
+<!--
+    更新 data 数据，页面中的数据也会更新。
+    更新页面数据，data 数据也会更新。
+    -->
+<div id="div">
+    <form autocomplete="off">
+        姓名：<input type="text" name="username" v-model="username"><br/>
+        年龄：<input type="number" name="age" v-model="age">
+    </form>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#div",
+        data:{
+            username:"张三",
+            age:23
+        }
+    });
+</script>
+</html>

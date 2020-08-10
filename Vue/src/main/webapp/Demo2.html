@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>常用指令</title>
+</head>
+<body>
+<div id="div">
+    <div>{{msg}}</div>
+    <!--文本插值-->
+    <div v-html="msg1" style="color: red"></div>
+    <!--绑定属性-->
+    <a v-bind:href="url">安徽科技学院</a><br/>
+    <font v-bind:color="color">德馨园3#605</font>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#div",
+        data:{
+            msg:"智者不入爱河",
+            msg1:"<b>愚者自甘堕落</b>",
+            url:"http://WWW.ahstu.cn",
+            color:"yellow"
+        }
+    });
+</script>
+</html>

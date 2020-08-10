@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+</head>
+<body>
+<div id="div">
+    <ul>
+        <li v-for="a in arr">
+            {{a}}
+        </li>
+        <li v-for="user in userList">
+            {{user}}
+        </li>
+    </ul>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+       el:"#div",
+       data:{
+           //数组
+           arr:["a","b","c","d","张三","李四","王二麻子"],
+           //集合
+           userList:[
+               {username:"admin",password:"12345"},
+               {username:"二愣子",password:"666"}
+           ]
+       }
+    });
+</script>
+</html>

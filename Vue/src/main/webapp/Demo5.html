@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+<div id="div">
+    <div>{{name}}</div>
+    <button @click="fun1">改变名字</button><br/>
+    <button v-on:click="change()">改变名字</button><br/>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#div",
+        data:{
+            name:"二愣子"
+        },
+        methods:{
+            fun1:function(){
+                alert("ojbk");
+                this.name="呆头";
+            },
+            change(){
+                alert("odk");
+                this.name="阿衰";
+            }
+        }
+    });
+</script>
+</html>

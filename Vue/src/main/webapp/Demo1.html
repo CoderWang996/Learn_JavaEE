@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS入门</title>
+</head>
+<body>
+<div id="app">
+    <!--{{}}:
+    Vue插值表达式
+    算术运算符
+    比较运算符
+    三元运算
+    -->
+    <div>
+        {{val}}
+    </div>
+    <div>
+        {{username}}
+    </div>
+    <div>
+        <span>{{1+1}}</span>
+    </div>
+    <div>
+        <span>{{2>1}}</span>
+    </div>
+    <div>
+        <span>{{2>1?"yes":"no"}}</span>
+    </div>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    //创建Vue对象
+    new Vue({
+       //el指定接管页面区域
+       el:"#app",
+        data:{
+           val:"我叫阿衰",
+            username:"二楞子"
+        }
+    });
+</script>
+</html>
