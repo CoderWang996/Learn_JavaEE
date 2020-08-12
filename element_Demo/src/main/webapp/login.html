@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/axios-0.18.0.js" type="text/javascript"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <style lang="scss" scoped>
+        .login-box {
+            border: 1px solid #DCDFE6;
+            width: 350px;
+            margin: 120px auto;
+            padding: 35px 35px 15px 35px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            box-shadow: 0 0 25px #909399;
+        }
+
+        .login-title {
+            text-align: center;
+            margin: 0 auto 40px auto;
+            color: #303133;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <el-form ref="loginForm" :model="form" :rules="rules" label-width="80px" class="login-box">
+        <h3 class="login-title">欢迎登录</h3>
+        <el-form-item label="账号" prop="username">
+            <el-input type="text" placeholder="请输入账号" v-model="form.username"/>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+            <el-input type="password" placeholder="请输入密码" v-model="form.password"/>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" v-on:click="onSubmit('loginForm')">登录</el-button>
+        </el-form-item>
+    </el-form>
+</div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            form: {
+                username: '',
+                password: '',
+            },
+            rules: {//效验规则
+                username: [
+                    {required: true, message: '请输入用户名', trigger: 'blur'}
+                ],
+                password: [
+                    {required: true, message: '请输入密码', trigger: 'blur'}
+                ]
+            }
+        },
+        methods: {
+            onSubmit(formName) {
+                // 为表单绑定验证功能
+                this.$refs[formName].validate((valid) => {
+
+                    if (valid) {
+                        //请求服务器完成登录功能
+                        axios.post("/Element/UserServlet/login", this.form)
+                            .then(resp => {
+                                if (resp.data == true) {
+                                    //登录成功，跳转到首页
+                                    location.href = "index.html";
+                                } else {
+                                    //登录失败，跳转到登录页面
+                                    alert("登录失败，请检查用户名和密码");
+                                    location.href = "login.html";
+                                }
+                            })
+                    } else {
+                        return false;
+                    }
+                });
+            }
+        }
+    });
+</script>
+</html>

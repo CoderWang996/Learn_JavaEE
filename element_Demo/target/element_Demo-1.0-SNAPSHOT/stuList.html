@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+</head>
+<body>
+<div id="div">
+    <b style="color: red; font-size: 20px;">学生列表</b>
+    <div style="float: right;">
+        <el-button type="primary" @click="showAddStu">添加学生</el-button>
+    </div>
+    <el-table :data="tableData">
+        <el-table-column prop="number" label="学号" width="120">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="120">
+        </el-table-column>
+        <el-table-column prop="birthday" label="生日" width="140">
+        </el-table-column>
+        <el-table-column prop="address" label="地址">
+        </el-table-column>
+        <el-table-column label="操作" width="180">
+            <template slot-scope="props">
+                <el-button type="warning" @click="showEditStu(props.row)">编辑</el-button>
+                <el-button type="danger" @click="deleteStu(props.row)">删除</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+
+    <!--
+        分页组件
+          @size-change： 当改变每页条数时触发的函数
+          @current-change：当改变页码时触发的函数
+          current-page ：默认的页码
+          :page-sizes：每页条数选择框中显示的值
+          :page-size : 默认的每页条数
+          layout： 分页组件的布局
+              total（总条数）, sizes(每页条数), prev（上一页）, pager(所有的页码), next(下一页), jumper（跳转页码）
+          :total: 总条数
+    -->
+    <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="pagination.currentPage"
+            :page-sizes="[3,5,8]"
+            :page-size="pagination.pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="pagination.total">
+    </el-pagination>
+
+    <el-dialog title="添加学生信息" :visible.sync="dialogTableVisible4add" @close="resetForm('addForm')">
+        <!--
+            :model="formData": 关联数据
+            :rules: 关联校验规则
+            ref： 在获取表单对象时使用
+        -->
+        <el-form :model="formData" :rules="rules" ref="addForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="学生学号" prop="number">
+                <el-input v-model="formData.number"></el-input>
+            </el-form-item>
+            <el-form-item label="学生姓名" prop="name">
+                <el-input v-model="formData.name"></el-input>
+            </el-form-item>
+            <el-form-item label="学生生日" prop="birthday">
+                <!--v-model : 双向绑定 -->
+                <el-input v-model="formData.birthday" type="date"></el-input>
+            </el-form-item>
+            <el-form-item label="学生地址" prop="address">
+                <el-input v-model="formData.address"></el-input>
+            </el-form-item>
+            <el-form-item align="right">
+                <el-button type="primary" @click="addStu()">添加</el-button>
+                <el-button @click="resetForm('addForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+
+    <el-dialog title="编辑学生信息" :visible.sync="dialogTableVisible4edit" @close="resetForm('editForm')">
+        <!--
+            :model="formData": 关联数据
+            :rules: 关联校验规则
+            ref： 在获取表单对象时使用
+        -->
+        <el-form :model="editFormData" :rules="rules" ref="editForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="学生学号" prop="number">
+                <el-input v-model="editFormData.number"></el-input>
+            </el-form-item>
+            <el-form-item label="学生姓名" prop="name">
+                <el-input v-model="editFormData.name"></el-input>
+            </el-form-item>
+            <el-form-item label="学生生日" prop="birthday">
+                <!--v-model : 双向绑定 -->
+                <el-input v-model="editFormData.birthday" type="date"></el-input>
+            </el-form-item>
+            <el-form-item label="学生地址" prop="address">
+                <el-input v-model="editFormData.address"></el-input>
+            </el-form-item>
+
+            <el-form-item align="right">
+                <el-button type="warning" @click="updateStu()">修改</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+</div>
+</body>
+<script>
+    new Vue({
+        el: "#div",
+        data: {
+            dialogTableVisible4add: false,  //添加窗口显示状态
+            dialogTableVisible4edit: false, //编辑窗口显示状态
+            formData: {},//添加表单的数据
+            editFormData: {},//编辑表单的数据
+            tableData: [],//表格数据
+            pagination: {
+                currentPage: 1, //当前页
+                pageSize: 5,    //每页显示条数
+                total: 0        //总条数
+            }, rules: {
+                number: [
+                    {required: true, message: '请输入学号', trigger: 'blur'},
+                    {min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur'}
+                ],
+                name: [
+                    {required: true, message: '请输入姓名', trigger: 'blur'},
+                    {min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur'}
+                ],
+                birthday: [
+                    {required: true, message: '请选择日期', trigger: 'change'}
+                ],
+                address: [
+                    {required: true, message: '请输入地址', trigger: 'blur'},
+                    {min: 2, max: 200, message: '长度在 2 到 200 个字符', trigger: 'blur'}
+                ],
+            }
+        },
+        methods: {
+            //分页查询
+            //分页查询功能
+            selectByPage() {
+                axios.post("/Element/StudentServlet/selectByPage", "currentPage=" + this.pagination.currentPage + "&pageSize=" + this.pagination.pageSize)
+                    .then(resp => {
+                        //将查询出的数据赋值tableData
+                        this.tableData = resp.data.list;
+                        //设置分页参数
+                        //当前页
+                        this.pagination.currentPage = resp.data.pageNum;
+                        //总条数
+                        this.pagination.total = resp.data.total;
+                    })
+            }
+        }, created() {
+            //调用分页查询功能
+            this.selectByPage();
+        }
+    });
+</script>
+</html>
