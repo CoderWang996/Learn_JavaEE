@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet("/StudentServlet/*")
 public class StudentServlet extends BaseServlet {
-    //分页查询
+    /*//分页查询
     private void selectByPage(HttpServletRequest req, HttpServletResponse resp){
         //获取页面数据
         String currentPage = req.getParameter("currentPage");
@@ -84,5 +84,52 @@ public class StudentServlet extends BaseServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+    //分页查询
+    private void selectByPage(HttpServletRequest req, HttpServletResponse resp) {
+        //获取页面数据
+        String currentPage = req.getParameter("currentPage");
+        String pageSize = req.getParameter("pageSize");
+        //调用业务层查询方法
+        Page page = service.selectByPage(Integer.parseInt(currentPage), Integer.parseInt(pageSize));
+        //封装pageInfo
+        PageInfo info = new PageInfo(page);
+        //将info转成json，响应给客户端
+        try {
+            String json = mapper.writeValueAsString(info);
+            resp.getWriter().write(json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //添加功能
+    private void addStu(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //获取页面数据
+        BufferedReader reader = req.getReader();
+        //将流对象转成user对象
+        Student student = gson.fromJson(reader, Student.class);
+        //调用service层的addStu方法
+        service.addStu(student);
+
+    }
+
+    //修改功能
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //获取页面数据
+        BufferedReader reader = req.getReader();
+        //将流对象转成user对象
+        Student student = gson.fromJson(reader, Student.class);
+        //调用service层的update方法
+        service.update(student);
+
+    }
+
+    //删除功能
+    private void deleteStu(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //获取页面数据
+        String number = req.getParameter("number");
+        //调用service层的deleteStu方法
+        service.deleteStu(number);
     }
 }
