@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+    <!--4、分页插件配置-->
+    <!--加载外部资源配置文件-->
+    <properties resource="config.properties"/>
+    <!--日志配置-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.itheima.domain"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--配置方言-->
+            <property name="dialectHelper" value="mysql"/>
+        </plugin>
+    </plugins>
+    <!--1、运行环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--事务配置-->
+            <transactionManager type="JDBC"/>
+            <!--数据源配置
+                POOLED:采用池的思想：用时从池中取，用完是还回池中
+                UNPOOLED：不采用池思想
+                JNDI：需要服务器的支持
+            -->
+            <dataSource type="POOLED">
+                <!--连接数据库四大基本特征-->
+                <!--
+                ${}:OGNL表达式
+                对象图导航语言
+                -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--2、指定映射配置文件的位置（加载映射配置文件）-->
+    <mappers>
+<!--        <mapper resource="UserMapper.xml"/>
+        <mapper resource="OrdersMapper.xml"/>-->
+        <package name="com.itheima.mapper"/>
+    </mappers>
+</configuration>

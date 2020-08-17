@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.store.CompanyMapper">
+    <!--遍历-->
+    <select id="findAll" resultType="Company">
+         SELECT * FROM st_company
+    </select>
+
+    <!--新增-->
+    <insert id="save" parameterType="Company">
+       insert into st_company (id, name, expiration_date,
+        address, license_id, representative,
+        phone, company_size, industry,
+        remarks, state,
+        city)
+        values
+        (#{id}, #{name}, #{expiration_date},
+        #{address}, #{license_id}, #{representative},
+        #{phone}, #{company_size}, #{industry},
+        #{remarks}, #{state},
+        #{city})
+    </insert>
+
+    <!--根据id查询-->
+    <select id="findByid" parameterType="string" resultType="Company">
+        select * from st_company where id=#{id}
+    </select>
+
+    <!--修改-->
+    <update id="update" parameterType="Company">
+         update st_company set
+        id=#{id}, name=#{name},
+        address=#{address}, license_id=#{license_id}, representative=#{representative},
+        phone=#{phone},company_size=#{company_size}, industry=#{industry},
+        remarks=#{remarks}, state=#{state},
+        city=#{city}
+        where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from st_company
+        <where>
+            <foreach collection="array" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

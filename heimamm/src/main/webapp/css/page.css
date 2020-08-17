@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(210, 214, 222);
+}
+
+.login-box {
+    margin: 100px auto;
+    text-align: center;
+    /*border: 2px black solid;*/
+}
+
+.login-box-body {
+    margin-top: 15px;
+    padding-top: 10px;
+
+}
+
+.login-logo a {
+    font-size: 38px;
+    font-family: 微软雅黑;
+    text-decoration: none;
+}
+
+el-form {
+    border: 1px solid black;
+}
+
+.el-input__inner {
+    width: 310px;
+}
+
+.login-box-body {
+    background-color: #ffffff;
+    text-align: center;
+    width: 350px;
+    height: 380px;
+}
+
+.el-image__inner {
+    width: 300px;
+}
+
+.el-button {
+    margin-left: 180px;
+    border-radius: 1px;
+    background-color: rgb(60, 141, 188);
+    color: #ffffff;
+    width: 100px;
+}

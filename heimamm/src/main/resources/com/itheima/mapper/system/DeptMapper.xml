@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.system.DeptMapper">
+
+    <!--遍历所有-->
+    <resultMap id="deptMap" type="Dept">
+        <id column="dept_id" property="id"/>
+        <result column="dname" property="deptName"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="state" property="state"/>
+        <association property="parent" javaType="Dept">
+            <result column="pname" property="deptName"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="deptMap">
+        select
+        d.dept_id,d.dept_name dname,
+        d.parent_id,d.state,p.dept_name pname
+        from ss_dept d
+        left join ss_dept p
+        on d.parent_id=p.dept_id
+    </select>
+    
+    <!--新增-->
+    <insert id="insert" parameterType="Dept">
+        INSERT INTO ss_dept VALUES(#{id},#{deptName},#{parentId},#{state})
+    </insert>
+
+    <!--批量删除-->
+    <delete id="deleteByids" parameterType="list">
+        DELETE FROM ss_dept
+        <where>
+            <foreach collection="array" item="id" separator="," open="dept_id in (" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+    <!--根据id查询-->
+    <select id="findById" parameterType="string" resultMap="deptMap">
+        select
+        d.dept_id,d.dept_name dname,
+        d.parent_id,d.state,p.dept_name pname
+        from ss_dept d
+        left join ss_dept p
+        on d.parent_id=p.dept_id
+		WHERE d.dept_id=#{id}
+    </select>
+    <!--修改-->
+    <update id="update" parameterType="Dept">
+        update ss_dept set dept_id=#{id},dept_name=#{deptName},parent_id=#{parentId},state=#{state}
+        where dept_id=#{id}
+    </update>
+</mapper>
