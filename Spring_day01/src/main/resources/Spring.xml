@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 1.创建spring控制的资源-->
+    <bean id="userService" class="com.service.impl.UserServiceImpl"/>
+    <bean id="Stu" class="com.domain.Student" scope="singleton" init-method="init1" destroy-method="des1">
+        <!--给对应的属性赋值-->
+        <property name="name" value="唐三藏"/>
+        <property name="age" value="100"/>
+        <property name="address" ref="addr"/>
+        <property name="major" value="计算机科学与技术"/>
+        <property name="birthday" ref="date"/>
+    </bean>
+    <bean id="addr" class="com.domain.Address">
+        <property name="Saddr" value="虚线"/>
+    </bean>
+    <bean id="date" class="java.util.Date"/>
+
+    <!--加载外部资源配置文件-->
+    <context:property-placeholder location="classpath:dataSourse.properties"/>
+    <!--配置数据源：druid-->
+    <bean id="dataSourse" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--配置数据库连接的四大基本特征-->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置数据源：c3p0-->
+    <bean id="dataSourse1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--配置数据库连接四大基本特征-->
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+</beans>

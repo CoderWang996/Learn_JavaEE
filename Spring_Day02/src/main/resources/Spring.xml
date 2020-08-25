@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--加载资源配置文件-->
+    <context:property-placeholder location="classpath:dataSourse.properties"/>
+    <!--配置数据源 druid-->
+    <bean id="dataSourse" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--数据库连接四大基本特征-->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--将mybatis交给Spring管理-->
+    <!--创建SqlSessionFactory对象-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSourse"/>
+        <!--配置别名-->
+        <property name="typeAliasesPackage" value="com.domain"/>
+    </bean>
+    <!--包搜索获取Mapper对象存入IOC容器中-->
+    <bean class="org.mybatis.spring.com.mapper.MapperScannerConfigurer">
+        <!--指定需要创建Mapper代理对象的接口的基础包-->
+        <property name="basePackage" value="com.mapper"/>
+    </bean>
+    <!--配置Service层-->
+    <bean id="userService" class="com.service.impl.UserServiceImpl">
+        <!--注入mapper-->
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+</beans>
