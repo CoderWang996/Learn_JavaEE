@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置service-->
+    <bean id="userService" class="com.itheima.service.impl.UserServiceImpl"/>
+    <!--声明切面对象-->
+    <bean id="tx" class="com.itheima.aop.TransationApp"/>
+    <!--配置AOP：织入-->
+    <aop:config>
+        <aop:pointcut id="pid" expression="execution(* *..*(..))"/>
+        <!--声明切面-->
+        <aop:aspect ref="tx">
+            <!--建立切入点与通知之间的关系-->
+            <!--            <aop:before method="open" pointcut="execution(* com.itheima.service.impl.UserServiceImpl.save())"/>
+                        <aop:after-returning method="commit" pointcut="execution(* com.itheima.service.impl.UserServiceImpl.save())"/>-->
+            <!--            <aop:before method="open" pointcut="execution(* *..*(..))"/>
+                        <aop:after-returning method="commit" pointcut="execution(* *..*(..))"/>-->
+            <!--            &lt;!&ndash;开启事务&ndash;&gt;
+                        <aop:before method="open" pointcut-ref="pid"/>
+                        &lt;!&ndash;提交事务&ndash;&gt;
+                        <aop:after-returning method="commit" pointcut-ref="pid"/>
+                        &lt;!&ndash;回滚&ndash;&gt;
+                        <aop:after-throwing method="rollback" pointcut-ref="pid"/>
+                        &lt;!&ndash;释放资源&ndash;&gt;
+                        <aop:after method="close" pointcut-ref="pid"/>-->
+            <!--环绕通知-->
+            <aop:around method="around" pointcut-ref="pid"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
