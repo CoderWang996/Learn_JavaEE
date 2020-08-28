@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--开启组件扫描-->
+    <context:component-scan base-package="com.itheima"/>
+    <!--加载外部资源-->
+    <context:property-placeholder location="classpath:dataSource.properties"/>
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--把mybatis交由Spring管理-->
+    <!--创建SqlSessionBean对象-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置别名-->
+        <property name="typeAliasesPackage" value="com.itheima.domain"/>
+    </bean>
+    <!--配置Mapper扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫描基础包-->
+        <property name="basePackage" value="com.itheima.mapper"/>
+    </bean>
+    <!--声明事务管理对象-->
+    <bean id="transactionMapper" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--声明事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionMapper">
+        <!--配置事务的属性-->
+        <tx:attributes>
+            <!--配置通用操作-->
+            <tx:method name="*" read-only="false" isolation="DEFAULT" propagation="REQUIRED"/>
+            <!--把所有查询设为只读-->
+            <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置AOP-->
+    <aop:config>
+        <!--切入点-->
+        <aop:pointcut id="pid" expression="execution(* com.itheima.service.*.*(..))"/>
+        <!--配置切面-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pid"/>
+    </aop:config>
+</beans>
