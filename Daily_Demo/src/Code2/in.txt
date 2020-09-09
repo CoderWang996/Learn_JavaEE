@@ -1,0 +1,2 @@
+C was originally designed for and implemented on the UNIX operating system on the DEC PDP-11, by Dennis Ritchie.
+The book is not an introductory programming manual.
