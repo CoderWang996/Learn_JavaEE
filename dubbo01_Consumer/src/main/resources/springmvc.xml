@@ -9,7 +9,7 @@
     <!--1、配置应用名称：一般就是工程名称，要求唯一-->
     <dubbo:application name="dubbo01_Consumer"/>
     <!--配置注册中心-->
-    <dubbo:registry address="zookeeper://localhost2181"/>
+    <dubbo:registry address="zookeeper://localhost:2181"/>
     <!--开启注解扫描-->
     <dubbo:annotation package="com.itheima.controller"/>
 </beans>
