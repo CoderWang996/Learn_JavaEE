@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+<div id="demo3">
+    <div v-if="n%3==0">div1</div>
+    <div v-else-if="n%3==1">div2</div>
+    <div v-else="n%3==2">div3</div>
+    <div v-show="flag">div4</div>
+</div>
+</body>
+<script src="../js/vuejs-2.5.16.js"></script>
+<script>
+    new Vue({
+       el:"#demo3",
+        data:{
+           n:"2",
+            flag:"true"
+        }
+    });
+</script>
+</html>

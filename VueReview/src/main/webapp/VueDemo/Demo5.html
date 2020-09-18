@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单渲染</title>
+</head>
+<body>
+<div id="demo5">
+    <form autocomplete="off">
+        用户名：<input type="text" name="username" v-model="username"><br/>
+        密码：<input type="text" name="pwd" v-model="pwd"><br/>
+        年龄：<input type="text" name="age" v-model="age"><br/>
+        性别：<input type="text" name="gender" v-model="gender"><br/>
+        <button onclick="sm()">提交</button>
+    </form>
+</div>
+</body>
+<script src="../js/vuejs-2.5.16.js"></script>
+<script>
+    let vm=new Vue({
+       el:"#demo5",
+       data:{
+           username:"admin",
+           pwd:1123
+       },
+        methods:{
+          look(){
+              alert("用户名:"+this.username+"密码:"+this.pwd+"年龄:"+this.age+"性别:"+this.gender);
+          }
+        }
+    });
+    function sm() {
+        vm.look();
+    }
+</script>
+</html>

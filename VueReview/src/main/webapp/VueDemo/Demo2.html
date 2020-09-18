@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本插值</title>
+</head>
+<body>
+<div id="demo2">
+    <div>{{msg}}</div>
+    <div v-html="msg"></div>
+</div>
+</body>
+<script src="../js/vuejs-2.5.16.js"></script>
+<script>
+    new Vue({
+       el:"#demo2",
+       data:{
+           msg:"<b>v-html</b>"
+       }
+    });
+</script>
+</html>

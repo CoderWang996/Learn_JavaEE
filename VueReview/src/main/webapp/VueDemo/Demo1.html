@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/vuejs-2.5.16.js"></script>
+    <title>快速入门</title>
+</head>
+<body>
+<!-- 视图 -->
+<div id="div">
+    {{msg}}
+</div>
+</body>
+<script>
+    // 脚本
+    new Vue({
+        el:"#div",
+        data:{
+            msg:"Hello Vue"
+        }
+    });
+</script>
+</html>

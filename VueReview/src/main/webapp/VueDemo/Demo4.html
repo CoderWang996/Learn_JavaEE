@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+</head>
+<body>
+<div id="demo4">
+    <ul>
+        <li v-for="name in names">
+            {{name}}
+        </li>
+        <li v-for="value in student">
+            {{value}}
+        </li>
+    </ul>
+</div>
+</body>
+<script src="../js/vuejs-2.5.16.js"></script>
+<script>
+    new Vue({
+       el:"#demo4",
+       data:{
+           names:["张三","李四","王五"],
+           student:{
+               name:"张三",
+               age:23
+           }
+       }
+    });
+</script>
+</html>
