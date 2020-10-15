@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "person1",
+      "type": "com.example.demo.controller.YmlController2",
+      "sourceType": "com.example.demo.controller.YmlController2"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person1.name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.demo.controller.YmlController2"
+    }
+  ],
+  "hints": []
+}

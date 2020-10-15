@@ -1,0 +1,29 @@
+#基本语法
+server:
+    port: 800
+    address: 127.0.0.1
+#字符串
+name: coderwang
+msg1: 'hello \n world'  # 单引忽略转义字符
+msg2: "hello \n world"  # 双引识别转义字符
+#对象(map)
+person1:
+  name: ${name} # 引用上边定义的name值
+#行内写法：
+person2: {name: zhangsan}
+#数组(一组按次序排列的值)
+address1:
+  - beijing
+  - shanghai
+#行内写法
+address2: [beijing,tianjin]
+#集合(对象数据)
+student1:
+  - name: laowang
+    age: 18
+    address: beijing
+  - name: laozhang
+    age: 20
+    address: nanjing
+#行内写法（数组加对象）
+student2: [{name: tom,age: 21,address: beijing},{name: jim,age: 11,address: nanjing}]

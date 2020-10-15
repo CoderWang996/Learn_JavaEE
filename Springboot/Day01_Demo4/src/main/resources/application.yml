@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: 192.168.23.129 # redis的主机ip
+    port: 6688 #端口号
