@@ -1,0 +1,13 @@
+server:
+  port: 9000
+eureka:
+  instance:
+    hostname: eureka-server2
+  client:
+    service-url:
+     defaultZone: http://eureka-server1:8000/eureka
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  application:
+    name: eureka-server-ha
