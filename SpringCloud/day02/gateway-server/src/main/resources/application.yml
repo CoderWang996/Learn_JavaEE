@@ -1,0 +1,15 @@
+server:
+  port: 9898
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes: #集合。
+        # id: 唯一标识。默认是一个UUID
+        # uri: 转发路径
+        # predicates: 条件,用于请求网关路径的匹配规则
+        - id: gateway-provider
+          uri: http://127.0.0.1:8081/
+          predicates:
+            - Path=/product/**
