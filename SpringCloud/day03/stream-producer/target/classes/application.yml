@@ -1,0 +1,17 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: stream_producer
+  rabbitmq:
+    addresses: 127.0.0.1
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: itheima_default
+      binders:
+        defaultRabbit:
+          type: rabbit

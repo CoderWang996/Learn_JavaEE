@@ -1,0 +1,17 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: stream_consumer
+  rabbitmq:
+    addresses: 127.0.0.1
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: itheima_default
+      binders:
+        defaultRabbit:
+          type: rabbit

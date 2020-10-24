@@ -1,0 +1,30 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: config-server
+  # spring cloud config
+  cloud:
+    config:
+      server:
+        # git 的 远程仓库地址
+        git:
+          uri: https://gitee.com/coder__wangchenyang/config_-demo.git
+  #配置rabbitmq信息
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+# 暴露bus的刷新端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
